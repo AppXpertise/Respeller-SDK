@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         {
             wordText.text = "SDK Available. You can start game now";
             isSDKInit = true;
-            RespellerSDK.SetTestMode(true);
+            RespellerSDK.SetTestMode(false);
 
             StartGameButton.interactable = true;
         }
@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
     {
         RespellerSDK.WordWin(new WordWinType()
         {
-            challengeWord_id = dictationData.findWordsByUserInChallengeWords[currentWordCount].wordId,
+            challengeWord_id = dictationData.findWordsByUserInChallengeWords[currentWordCount].id,
             dictation = dictationData,
             isWin = true
         });
