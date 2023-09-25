@@ -66,8 +66,8 @@ namespace Respeller
 #if UNITY_WEBGL && !UNITY_EDITOR
             return respeller_checkRespellerVariable();
 #else
-            Debug.LogError("Not available for this platform");
-            return false;
+            Debug.LogError("Only Test Mode/Data Available");
+            return true;
 #endif
         }
 
@@ -80,7 +80,7 @@ namespace Respeller
 #if UNITY_WEBGL && !UNITY_EDITOR
             respeller_enableTestMode(status);
 #else
-            Debug.LogError("Not available for this platform");
+            Debug.LogError("Only Test Data Available");
 #endif
         }
 
@@ -95,7 +95,27 @@ namespace Respeller
 #if UNITY_WEBGL && !UNITY_EDITOR
             respeller_startGame();
 #else
-            Debug.LogError("Not available for this platform");
+            Respeller_OnSessionStarted?.Invoke(new()
+            {
+                findWordsByUserInChallengeWords = new()
+                {
+                    new()
+                    {
+                        id = 1,
+                        wordTemp = "Price"
+                    },
+                    new()
+                    {
+                        id = 1,
+                        wordTemp = "Daily"
+                    },
+                    new()
+                    {
+                        id = 1,
+                        wordTemp = "Mobile"
+                    }
+                }
+            });
 #endif
         }
 
